@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "169783942105",
+    "project_id": "buscador-cruceros",
+    "storage_bucket": "buscador-cruceros.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:169783942105:android:67c8d8fe59b3de50a697c8",
+        "android_client_info": {
+          "package_name": "com.buscador_cruceros"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvWk7hMckWAXjIvscsYWrc5V2TMUppe3w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

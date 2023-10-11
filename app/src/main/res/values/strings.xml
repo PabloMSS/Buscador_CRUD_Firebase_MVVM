@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Buscador_Cruceros</string>
+    <string name="principal_Title">¡Encuentra tu Crucero!</string>
+    <string name="year_construction">Año de Construcción</string>
+    <string name="tonelaje">Tonelaje</string>
+    <string name="company">Naviera</string>
+    <string name="capacity_pasajeros">Capacidad de Pasajeros</string>
+    <string name="capacity_tripulantes">Capacidad de Tripulantes</string>
+    <string name="returnApp">Volver Atrás</string>
+    <string name="addCruise">Añadir Crucero</string>
+    <string name="nameCruise">Nombre del Crucero</string>
+    <string name="infoSelect">Seleccione una Naviera:</string>
+    <string name="description">Escribe la descripción del crucero</string>
+</resources>
