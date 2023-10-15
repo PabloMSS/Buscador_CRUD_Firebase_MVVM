@@ -17,13 +17,18 @@
         android:textSize="30sp"
         android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/etNameCruise"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginBottom="12dp"
-        android:hint="@string/nameCruise" />
+        android:hint="@string/nameCruise">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etNameCruise"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Spinner
         android:id="@+id/spNavieras"
@@ -32,70 +37,103 @@
         android:layout_marginHorizontal="16dp"
         android:layout_marginBottom="12dp" />
 
-    <EditText
-        android:id="@+id/etTonelaje"
+    <TextView
+        android:id="@+id/tvYearConstruction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:text="Seleccione el año de Contrucción"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/imgCalendar"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:src="@drawable/calendar" />
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="12dp"
         android:hint="@string/tonelaje"
-        android:inputType="number"
-        android:layout_marginBottom="12dp" />
+        android:inputType="number">
 
-    <EditText
-        android:id="@+id/etPasajeros"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etTonelaje"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:hint="@string/capacity_pasajeros"
-        android:inputType="number"
-        android:layout_marginBottom="12dp"/>
+        android:layout_marginBottom="12dp"
+        android:hint="@string/capacity_pasajeros">
 
-    <EditText
-        android:id="@+id/etTripulantes"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etPasajeros"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:hint="@string/capacity_tripulantes"
-        android:inputType="number"
-        android:layout_marginBottom="12dp"/>
+        android:layout_marginBottom="12dp"
+        android:hint="@string/capacity_tripulantes">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etTripulantes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Seleccione una Imagen del Crucero:"
         android:layout_marginHorizontal="16dp"
         android:layout_marginBottom="12dp"
+        android:text="Seleccione una Imagen del Crucero:"
         android:textSize="16sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
 
     <ImageView
         android:id="@+id/imgUpload"
-        android:layout_width="200dp"
+        android:layout_width="150dp"
         android:layout_height="100dp"
         android:layout_gravity="center"
         android:layout_marginBottom="8dp"
-        android:src="@drawable/upload_img"/>
+        android:src="@drawable/upload_img" />
 
     <EditText
         android:id="@+id/etDescripcion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:inputType="textMultiLine"
+        android:layout_marginBottom="12dp"
         android:hint="@string/description"
-        android:layout_marginBottom="12dp"/>
+        android:inputType="textMultiLine" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp">
+
         <Button
             android:id="@+id/btnAdd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/addCruise"
-            app:layout_constraintTop_toBottomOf="@+id/etDescripcion"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etDescripcion"
             tools:ignore="NotSibling" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

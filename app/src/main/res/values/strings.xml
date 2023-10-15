@@ -11,4 +11,8 @@
     <string name="nameCruise">Nombre del Crucero</string>
     <string name="infoSelect">Seleccione una Naviera:</string>
     <string name="description">Escribe la descripción del crucero</string>
+    <string name="mensaje_Naviera">Debes de Seleccionar una Naviera</string>
+    <string name="dialog_title_year">Año de Construcción</string>
+    <string name="confirmar_año">Confirmar Año</string>
+    <string name="text_año">Año de Contrucción</string>
 </resources>
