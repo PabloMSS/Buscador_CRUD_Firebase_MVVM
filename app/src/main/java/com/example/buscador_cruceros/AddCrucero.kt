@@ -6,6 +6,7 @@ import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.Typeface
 import android.net.Uri
@@ -15,6 +16,7 @@ import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
@@ -28,9 +30,11 @@ import androidx.activity.result.contract.ActivityResultContracts.PickVisualMedia
 import androidx.core.content.ContextCompat
 import com.example.buscador_cruceros.Models.Crucero
 import com.example.buscador_cruceros.Models.Naviera
+import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
+import org.w3c.dom.Text
 
 class AddCrucero : AppCompatActivity() {
     val db = Firebase.firestore
@@ -44,7 +48,7 @@ class AddCrucero : AppCompatActivity() {
     var yearConstruction: String = ""
 
     lateinit var etNameCruise: TextView
-    lateinit var spNavieras: Spinner
+    lateinit var spNavieras: AutoCompleteTextView
     lateinit var tvYearConstruction: TextView
     lateinit var etTonelaje: TextView
     lateinit var etPasajeros: TextView
@@ -76,9 +80,8 @@ class AddCrucero : AppCompatActivity() {
         btnAdd = findViewById(R.id.btnAdd)
         imgCalendar = findViewById(R.id.imgCalendar)
 
-        var adapterSpinner = ArrayAdapter<String>(this, com.bumptech.glide.R.layout.support_simple_spinner_dropdown_item, listNavieras)
-        spNavieras.adapter = adapterSpinner
-        listNavieras.add(getString(R.string.infoSelect))
+        var adapterSpinner = ArrayAdapter(this, R.layout.list_item, listNavieras)
+        spNavieras.setAdapter(adapterSpinner)
     }
 
     fun initUI(){
@@ -125,7 +128,7 @@ class AddCrucero : AppCompatActivity() {
 
     fun getCompany(){
         val adapterSpinner = ArrayAdapter(this, com.bumptech.glide.R.layout.support_simple_spinner_dropdown_item, listNavieras)
-        spNavieras.adapter = adapterSpinner
+        spNavieras.setAdapter(adapterSpinner)
 
         spNavieras.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parentView: AdapterView<*>?, selectedItemView: View?, position: Int, id: Long) {

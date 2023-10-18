@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginHorizontal="8dp"
+    android:layout_marginHorizontal="16dp"
     android:layout_marginVertical="16dp"
     tools:context=".DetallesActivity">
 
@@ -16,13 +16,15 @@
         <ImageView
             android:id="@+id/imgCruceroDetalle"
             android:layout_width="match_parent"
-            android:layout_height="250dp" />
+            android:layout_height="225dp"
+            android:scaleType="fitXY"/>
 
         <TextView
             android:id="@+id/tvTitleDetalle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:textColor="@color/white"
+            android:layout_marginTop="12dp"
             android:textSize="30sp"
             android:textStyle="bold"
             tools:text="Titulo" />
@@ -31,6 +33,8 @@
             android:id="@+id/tvCompanyDetalle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_marginTop="8dp"
             android:text="@string/company"
             android:textSize="16dp" />
 
@@ -38,6 +42,7 @@
             android:id="@+id/tvConstructionDetalle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
             android:layout_marginTop="8dp"
             android:text="@string/year_construction"
             android:textSize="16dp" />
@@ -46,6 +51,7 @@
             android:id="@+id/tvTonelajeDetalle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
             android:layout_marginTop="8dp"
             android:text="@string/tonelaje"
             android:textSize="16dp" />
@@ -54,6 +60,7 @@
             android:id="@+id/tvCapacityDetalle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
             android:layout_marginTop="8dp"
             android:text="@string/capacity_pasajeros"
             android:textSize="16dp" />
@@ -62,6 +69,7 @@
             android:id="@+id/tvCapacity2Detalle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
             android:layout_marginTop="8dp"
             android:text="@string/capacity_tripulantes"
             android:textSize="16dp" />
@@ -70,6 +78,7 @@
             android:id="@+id/tvDescripcionDetalle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
             android:layout_marginTop="12dp"
             android:textSize="18dp"
             tools:text="Descripción" />
@@ -78,6 +87,7 @@
             android:id="@+id/btnReturnDellate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/secondary_color"
             android:layout_gravity="right"
             android:text="@string/returnApp" />
     </androidx.appcompat.widget.LinearLayoutCompat>
