@@ -5,15 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.SearchView
 import android.widget.TextView
-import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.buscador_cruceros.Adapter.CruceroAdapter
 import com.example.buscador_cruceros.Models.Crucero
+import com.example.buscador_cruceros.ViewModel.BuscadorViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 
@@ -22,6 +21,8 @@ class BuscadorCrucero : AppCompatActivity() {
 
     var db = Firebase.firestore
     val storage = Firebase.storage
+
+    lateinit var viewModel: BuscadorViewModel
 
     var listCruceros = mutableListOf<Crucero>()
 
@@ -44,27 +45,24 @@ class BuscadorCrucero : AppCompatActivity() {
         svCrucero = findViewById(R.id.svCrucero)
         rvCrucero = findViewById(R.id.rvCrucero)
         btnFloating = findViewById(R.id.btnFloating)
+
+        cruceroAdapter = CruceroAdapter(){ position -> deleteCrucero(position)}
+        rvCrucero.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        rvCrucero.adapter = cruceroAdapter
     }
 
     fun initUI(){
-        cruceroAdapter = CruceroAdapter(listCruceros)
-        rvCrucero.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        rvCrucero.adapter = cruceroAdapter
-        getAll()
+        viewModel = ViewModelProvider(this).get(BuscadorViewModel::class.java)
+        viewModel.getAll()
+        viewModel.listCrucerosBD.observe(this){
+            it.let{result ->
+                listCruceros = result
+                cruceroAdapter.submitList(listCruceros)
+            }
+        }
+        /*cruceroAdapter = CruceroAdapter(viewModel.listCrucerosBD.value ?: emptyList<Crucero>()) { position -> deleteCrucero(position)}*/
         goAddCruise()
         funcionalitySearchView()
-    }
-
-    fun getAll(){
-        db.collection("crucero")
-            .get()
-            .addOnSuccessListener {
-                for(item in it){
-                    var crucero : Crucero = item.toObject(Crucero::class.java)
-                    listCruceros.add(crucero)
-                }
-                actualizarAdapter()
-            }
     }
 
     fun goAddCruise(){
@@ -106,6 +104,12 @@ class BuscadorCrucero : AppCompatActivity() {
 
                 }
         }
+    }
+
+    fun deleteCrucero(position: Int){
+        var idCrucero = listCruceros[position].id.toString()
+        viewModel.deleteCrucero(idCrucero)
+        viewModel.getAll()
     }
 
     fun actualizarAdapter(){

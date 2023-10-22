@@ -7,11 +7,14 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.get
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.buscador_cruceros.DetallesActivity
 import com.example.buscador_cruceros.Models.Crucero
 import com.example.buscador_cruceros.R
+import com.example.buscador_cruceros.ViewModel.BuscadorViewModel
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
@@ -36,7 +39,6 @@ class CruceroViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             intent.putExtra("crucero", crucero)
             cvCrucero.context.startActivity(intent)
         }
-
     }
 
     fun getImg(id: String){
