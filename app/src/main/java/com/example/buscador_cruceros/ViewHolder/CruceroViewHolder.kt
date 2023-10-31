@@ -12,6 +12,7 @@ import androidx.lifecycle.get
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.buscador_cruceros.DetallesActivity
+import com.example.buscador_cruceros.EditCrucero
 import com.example.buscador_cruceros.Models.Crucero
 import com.example.buscador_cruceros.R
 import com.example.buscador_cruceros.ViewModel.BuscadorViewModel

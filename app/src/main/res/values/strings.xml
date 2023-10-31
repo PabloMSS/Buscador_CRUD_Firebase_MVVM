@@ -8,6 +8,7 @@
     <string name="capacity_tripulantes">Capacidad de Tripulantes</string>
     <string name="returnApp">Volver Atrás</string>
     <string name="addCruise">Añadir Crucero</string>
+    <string name="editCruise">Editar Crucero</string>
     <string name="nameCruise">Nombre del Crucero</string>
     <string name="infoSelect">Seleccione una Naviera:</string>
     <string name="description">Escribe la descripción del crucero</string>

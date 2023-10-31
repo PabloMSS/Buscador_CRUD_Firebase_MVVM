@@ -16,6 +16,10 @@ class BuscadorViewModel: ViewModel() {
     val listCrucerosBD: LiveData<MutableList<Crucero>>
         get() = _listCrucerosBD
 
+    private val _mensajeDelete: MutableLiveData<String> = MutableLiveData()
+    val mensajeDelete: LiveData<String>
+        get() = _mensajeDelete
+
     fun getAll(){
         var list = mutableListOf<Crucero>()
         db.collection("crucero")
@@ -38,7 +42,7 @@ class BuscadorViewModel: ViewModel() {
             .document(id)
             .delete()
             .addOnSuccessListener {
-
+                _mensajeDelete.value = "Crucero Eliminado"
             }.addOnFailureListener {
 
             }

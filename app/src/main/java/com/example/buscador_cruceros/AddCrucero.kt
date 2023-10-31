@@ -161,7 +161,7 @@ class AddCrucero : AppCompatActivity() {
             var tripulantes = etTripulantes.text.toString()
             var tonelaje = etTonelaje.text.toString()
             if(idDocument.isNotEmpty() && nameCrucero.isNotEmpty() && descripcion.isNotEmpty() && infoDescripcion.isNotEmpty() && nameNaviera.isNotEmpty() && pasajeros.isNotEmpty() && tripulantes.isNotEmpty() && tonelaje.isNotEmpty() && yearConstruction != ""){
-                Toast.makeText(this, "Campos Rellenos", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Creando Crucero", Toast.LENGTH_LONG).show()
                 var crucero = Crucero(idDocument, nameCrucero, descripcion, infoDescripcion, nameNaviera, pasajeros.toInt(), yearConstruction, idDocument, tripulantes.toInt(), tonelaje.toInt())
                 viewModel.addCrucero(crucero)
 

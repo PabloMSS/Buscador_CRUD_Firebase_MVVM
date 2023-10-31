@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.SearchView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -60,7 +61,6 @@ class BuscadorCrucero : AppCompatActivity() {
                 cruceroAdapter.submitList(listCruceros)
             }
         }
-        /*cruceroAdapter = CruceroAdapter(viewModel.listCrucerosBD.value ?: emptyList<Crucero>()) { position -> deleteCrucero(position)}*/
         goAddCruise()
         funcionalitySearchView()
     }
@@ -109,6 +109,9 @@ class BuscadorCrucero : AppCompatActivity() {
     fun deleteCrucero(position: Int){
         var idCrucero = listCruceros[position].id.toString()
         viewModel.deleteCrucero(idCrucero)
+        viewModel.mensajeDelete.observe(this){ it ->
+            Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
+        }
         viewModel.getAll()
     }
 
