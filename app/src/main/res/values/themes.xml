@@ -10,13 +10,25 @@
 
     <style name="MyTextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="boxStrokeColor">@color/secondary_color</item>
+        <item name="android:textCursorDrawable">@null</item>
         <item name="hintTextColor">@color/white</item>
         <item name="android:textColorHint">@color/white</item>
+    </style>
+
+    <style name="MyEditTextInputLayout" parent="ThemeOverlay.Material3.TextInputEditText">
+        <item name="android:textCursorDrawable">@null</item>
     </style>
 
     <style name="CustomSpinner" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
         <item name="boxStrokeColor">@color/secondary_color</item>
         <item name="hintTextColor">@color/white</item>
         <item name="android:textColorHint">@color/white</item>
+    </style>
+
+    <style name="WhiteTextSearchView" parent="Widget.AppCompat.SearchView">
+        <item name="android:editTextColor">@color/white</item>
+        <item name="boxStrokeColor">@color/white</item>
+        <item name="android:textCursorDrawable">@null</item>
+        <item name="hintTextColor">#CFC9C9</item>
     </style>
 </resources>

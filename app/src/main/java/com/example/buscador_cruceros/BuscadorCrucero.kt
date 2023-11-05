@@ -3,6 +3,8 @@ package com.example.buscador_cruceros
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.Button
 import android.widget.SearchView
 import android.widget.TextView
 import android.widget.Toast
@@ -13,6 +15,7 @@ import com.example.buscador_cruceros.Adapter.CruceroAdapter
 import com.example.buscador_cruceros.Models.Crucero
 import com.example.buscador_cruceros.ViewModel.BuscadorViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
@@ -31,6 +34,7 @@ class BuscadorCrucero : AppCompatActivity() {
     private lateinit var svCrucero: SearchView
     private lateinit var rvCrucero: RecyclerView
     private lateinit var btnFloating: FloatingActionButton
+    private lateinit var btnReiniciar: Button
 
     private lateinit var cruceroAdapter: CruceroAdapter
 
@@ -46,7 +50,9 @@ class BuscadorCrucero : AppCompatActivity() {
         svCrucero = findViewById(R.id.svCrucero)
         rvCrucero = findViewById(R.id.rvCrucero)
         btnFloating = findViewById(R.id.btnFloating)
+        btnReiniciar = findViewById(R.id.btnReiniciar)
 
+        btnReiniciar.visibility = View.GONE
         cruceroAdapter = CruceroAdapter(){ position -> deleteCrucero(position)}
         rvCrucero.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         rvCrucero.adapter = cruceroAdapter
@@ -55,14 +61,17 @@ class BuscadorCrucero : AppCompatActivity() {
     fun initUI(){
         viewModel = ViewModelProvider(this).get(BuscadorViewModel::class.java)
         viewModel.getAll()
-        viewModel.listCrucerosBD.observe(this){
-            it.let{result ->
+        viewModel.listCrucerosBD.observe(this){ result ->
                 listCruceros = result
                 cruceroAdapter.submitList(listCruceros)
-            }
         }
         goAddCruise()
         funcionalitySearchView()
+
+        btnReiniciar.setOnClickListener {
+            filterList("")
+            btnReiniciar.visibility = View.GONE
+        }
     }
 
     fun goAddCruise(){
@@ -76,6 +85,7 @@ class BuscadorCrucero : AppCompatActivity() {
         svCrucero.setOnQueryTextListener( object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 filterList(query)
+                btnReiniciar.visibility = View.VISIBLE
                 return false
             }
 
@@ -90,6 +100,7 @@ class BuscadorCrucero : AppCompatActivity() {
         if(query != null){
             listCruceros.clear()
             db.collection("crucero")
+                .orderBy("yearConstruction", Query.Direction.DESCENDING)
                 .get()
                 .addOnSuccessListener {
                     for (item in it){

@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.buscador_cruceros.Models.Crucero
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -19,10 +20,10 @@ class BuscadorViewModel: ViewModel() {
     private val _mensajeDelete: MutableLiveData<String> = MutableLiveData()
     val mensajeDelete: LiveData<String>
         get() = _mensajeDelete
-
     fun getAll(){
         var list = mutableListOf<Crucero>()
         db.collection("crucero")
+            .orderBy("yearConstruction", Query.Direction.DESCENDING)
             .get()
             .addOnSuccessListener {
                 for(item in it){

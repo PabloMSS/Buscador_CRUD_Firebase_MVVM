@@ -191,7 +191,7 @@ class AddCrucero : AppCompatActivity() {
         btnYearConfirm = dialog.findViewById(R.id.btnYearConfirm)
         yearPicker.textColor = ContextCompat.getColor(this, R.color.white)
         yearPicker.minValue = 1900
-        yearPicker.maxValue = 2030
+        yearPicker.maxValue = 2050
         yearPicker.value = 2023
 
         btnYearConfirm.setOnClickListener {
@@ -201,6 +201,4 @@ class AddCrucero : AppCompatActivity() {
             yearConstruction = yearPicker.value.toString()
         }
     }
-
-
 }

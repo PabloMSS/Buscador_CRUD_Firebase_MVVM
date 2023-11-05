@@ -33,6 +33,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etNameCruise"
+                style="@style/MyEditTextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"/>
@@ -85,6 +86,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etTonelaje"
+                style="@style/MyEditTextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
@@ -102,6 +104,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etPasajeros"
+                style="@style/MyEditTextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
@@ -119,6 +122,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etTripulantes"
+                style="@style/MyEditTextInputLayout"
                 android:textColor="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -146,6 +150,7 @@
 
         <EditText
             android:id="@+id/etDescripcion"
+            style="@style/MyEditTextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/white"

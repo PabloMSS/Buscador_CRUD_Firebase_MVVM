@@ -8,8 +8,10 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.buscador_cruceros.Models.Crucero
+import com.example.buscador_cruceros.ViewModel.DetalleViewModel
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
@@ -17,6 +19,8 @@ import com.google.firebase.storage.ktx.storage
 class DetallesActivity : AppCompatActivity() {
     var db = Firebase.firestore
     val storage = Firebase.storage
+
+    lateinit var viewModel: DetalleViewModel
 
     private lateinit var imgCruceroDetalle: ImageView
     private lateinit var tvTitleDetalle: TextView
@@ -36,6 +40,7 @@ class DetallesActivity : AppCompatActivity() {
     }
 
     fun iniComponents(){
+        viewModel = ViewModelProvider(this).get(DetalleViewModel::class.java)
         imgCruceroDetalle = findViewById(R.id.imgCruceroDetalle)
         tvTitleDetalle = findViewById(R.id.tvTitleDetalle)
         tvConstructionDetalle = findViewById(R.id.tvConstructionDetalle)
@@ -49,7 +54,10 @@ class DetallesActivity : AppCompatActivity() {
 
     fun initUI(){
         var crucero: Crucero = intent.extras?.getSerializable("crucero") as Crucero
-        getNaviera(crucero.company.toString())
+        viewModel.getNaviera(crucero.company.toString())
+        viewModel.naviera.observe(this){
+            tvCompanyDetalle.text = tvCompanyDetalle.text.toString()+": "+it
+        }
         tvTitleDetalle.text = crucero.name
         tvConstructionDetalle.text = tvConstructionDetalle.text.toString()+": "+crucero.yearConstruction
         tvTonelajeDetalle.text = tvTonelajeDetalle.text.toString()+": "+crucero.tonelaje
@@ -60,22 +68,9 @@ class DetallesActivity : AppCompatActivity() {
         returnActivity()
     }
 
-    fun getNaviera(id:String){
-        db.collection("navieras")
-            .document(id)
-            .get()
-            .addOnSuccessListener {
-                tvCompanyDetalle.text = tvCompanyDetalle.text.toString()+": "+it.get("name").toString()
-            }
-            .addOnFailureListener {
-              Log.i("comapny", "Error")
-            }
-    }
-
     fun returnActivity(){
         btnReturnDellate.setOnClickListener {
-            var intent = Intent(this, BuscadorCrucero::class.java)
-            startActivity(intent)
+            finish()
         }
     }
 
