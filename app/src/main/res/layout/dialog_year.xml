@@ -40,5 +40,5 @@
         android:text="@string/confirmar_año"
         android:gravity="center"
         android:layout_marginHorizontal="16dp"
-        android:backgroundTint="@color/btn_no"/>
+        android:backgroundTint="@color/btn_confirm"/>
 </LinearLayout>
