@@ -106,13 +106,28 @@ class EditCrucero : AppCompatActivity() {
             chageYearConstruction()
         }
         btnEditAdd.setOnClickListener {
-            changeData()
-            deleteUpdateImg()
-            viewModel.editCrucero(crucero)
-            viewModel.imgUpload.observe(this){ result ->
-                if(result == true){
-                    var intent = Intent(this, BuscadorCrucero::class.java)
-                    startActivity(intent)
+            var dialog = Dialog(this)
+            dialog.setContentView(R.layout.dialog_confirm)
+            var tvPregunta = dialog.findViewById<TextView>(R.id.tv_pregunta_confirmacion)
+            var btnNo = dialog.findViewById<Button>(R.id.btn_no)
+            var btnSi = dialog.findViewById<Button>(R.id.btn_si)
+
+            dialog.show()
+            tvPregunta.text = dialog.context.getString(R.string.preguntaEdit)
+
+            btnNo.setOnClickListener {
+                dialog.hide()
+            }
+
+            btnSi.setOnClickListener {
+                changeData()
+                deleteUpdateImg()
+                viewModel.editCrucero(crucero)
+                viewModel.imgUpload.observe(this){ result ->
+                    if(result == true){
+                        var intent = Intent(this, BuscadorCrucero::class.java)
+                        startActivity(intent)
+                    }
                 }
             }
         }

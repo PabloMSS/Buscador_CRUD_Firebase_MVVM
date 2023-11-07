@@ -16,4 +16,8 @@
     <string name="dialog_title_year">Año de Construcción</string>
     <string name="confirmar_año">Confirmar Año</string>
     <string name="text_año">Año de Contrucción</string>
+    <string name="preguntaDelete">¿Deseas Eliminar el Crucero?</string>
+    <string name="preguntaEdit">¿Deseas Editar el Crucero?</string>
+    <string name="si">Sí</string>
+    <string name="no">No</string>
 </resources>
